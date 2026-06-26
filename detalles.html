@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vela Luxe - Detalles</title>
+  <style>
+    /* Tu diseño base */
+    body {
+      background-color: #000000;
+      color: #ffffff;
+      font-family: sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .btn-back {
+      color: #ffffff;
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+    .gallery-title {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    /* Tu cuadrícula de imágenes */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr; /* Cambia a 1fr 1fr si usas dos columnas en cel */
+      gap: 20px;
+    }
+    .gallery-item {
+      background: #111;
+      border-radius: 12px;
+      padding: 10px;
+      text-align: center;
+    }
+    .gallery-item img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 12px;
+      display: block;
+    }
+
+    /* EL DISEÑO DE LA FLECHA (Flotando al centro del costado derecho) */
+    .video-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 15px;
+      background: rgba(255, 255, 255, 0.9);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      z-index: 10;
+    }
+    .video-arrow span {
+      font-size: 14px;
+      color: #000000;
+      margin-left: 2px;
+    }
+    .item-info {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <a href="index.html" class="btn-back">&lt; Volver</a>
+    <h1 class="gallery-title" id="dinamic-title">Colección</h1>
+
+    <div class="gallery-grid">
+  
+      <!-- MODELO 1: Barbada -->
+      <div class="gallery-item">
+        <div class="media-container" style="position: relative; width: 100%;">
+          <img src="" id="img1"/>
+          <video id="main-video1" src="" controls style="display: none; width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 12px;"></video>
+          <div class="video-arrow" onclick="toggleVideo(1)">
+            <span>▶</span>
+          </div>
+        </div>
+        <!-- Se agregó id="desc1" -->
+        <div class="item-info" id="desc1">Barbada / 4.5mm / 50cm * 55cm * 60cm</div>
+      </div>
+
+      <!-- MODELO 2: Cartier -->
+      <div class="gallery-item">
+        <div class="media-container" style="position: relative; width: 100%;">
+          <img src="" id="img2"/>
+          <video id="main-video2" src="" controls style="display: none; width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 12px;"></video>
+          <div class="video-arrow" onclick="toggleVideo(2)">
+            <span>▶</span>
+          </div>
+        </div>
+        <!-- Se agregó id="desc2" -->
+        <div class="item-info" id="desc2">Cartier / 4.0mm / 50cm * 55cm * 60cm</div>
+      </div>
+
+      <!-- MODELO 3: Torsal -->
+      <div class="gallery-item">
+        <div class="media-container" style="position: relative; width: 100%;">
+          <img src="" id="img3"/>
+          <video id="main-video3" src="" controls style="display: none; width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 12px;"></video>
+          <div class="video-arrow" onclick="toggleVideo(3)">
+            <span>▶</span>
+          </div>
+        </div>
+        <!-- Se agregó id="desc3" -->
+        <div class="item-info" id="desc3">Torsal / 45cm * 50cm * 55cm * 60cm</div>
+      </div>
+
+      <!-- MODELO 4: Espiga -->
+      <div class="gallery-item">
+        <div class="media-container" style="position: relative; width: 100%;">
+          <img src="" id="img4"/>
+          <video id="main-video4" src="" controls style="display: none; width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 12px;"></video>
+          <div class="video-arrow" onclick="toggleVideo(4)">
+            <span>▶</span>
+          </div>
+        </div>
+        <!-- Se agregó id="desc4" -->
+        <div class="item-info" id="desc4">Espiga / 45cm * 50cm * 55cm</div>
+      </div>
+  
+    </div>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const categoria = urlParams.get('cat');
+
+    // LISTA DE PRODUCTOS 
+    const colecciones = {
+      'cadenas': {
+        titulo: 'Cadenas de Plata',
+        descripciones: [
+          'Barbada / 4.5mm / 50cm * 55cm * 60cm',
+          'Cartier / 4.0mm / 50cm * 55cm * 60cm',
+          'Torsal / 45cm * 50cm * 55cm * 60cm',
+          'Espiga / 45cm * 50cm * 55cm'
+        ],
+        videos: [
+          'https://www.dropbox.com/scl/fi/je6yjj9m9fyfuu6dkq5uk/Barbada.mp4.mp4?rlkey=ta1ptjykxmbqvds8sjc7mou0v&st=zjijbexq&raw=1', 
+          'https://www.dropbox.com/scl/fi/hhodkzb0g1qxor838er9s/Cartier.mp4.mp4?rlkey=y06mh1gnjypm1ew5zasla628l&st=kuxkdbac&raw=1', 
+          'https://www.dropbox.com/scl/fi/atmun96wh64f1m18xuitb/Torsal.mp4.mp4?rlkey=1emdwqutf8g0lfn7beqriavmr&st=tcqebwkl&raw=1', 
+          'https://www.dropbox.com/scl/fi/taa1nbp2rint12vo2asfp/Espiga.mp4.mp4?rlkey=bvamghwun26an4s7u9lem405d&st=kmuw95qz&raw=1',  
+        ],
+        fotos: [
+          'https://res.cloudinary.com/dojtf74vj/image/upload/f_auto,q_auto/1001064663_z0osdg',
+          'https://i.ibb.co/VpbvSDrD/20250919-162226-1.jpg',
+          'https://i.ibb.co/FbtmrK6t/20250919-162651-1.jpg', 
+          'https://i.ibb.co/5hzgNTmT/20250919-162859.jpg'  
+        ]
+      }, 
+      
+      'cadenas-oro': {
+        titulo: 'Cadenas de Oro 10k',
+        // ¡ESTA ES LA SECCIÓN NUEVA PARA TUS DESCRIPCIONES DE ORO!
+        descripciones: [
+          'Cubana  / 45cm * 50cm * 55cm * 60 cm', // <--- AQUÍ EDITAS LA FOTO 1
+          'Cartier / 45cm * 50cm * 55cm * 60cm', // <--- AQUÍ EDITAS LA FOTO 2
+          'Torsal / 45cm * 50cm * 55cm * 60cm', 
+          'Clip / 50cm * 55cm'  
+        ],
+        videos: [
+          'https://i.ibb.co/KpS2hjDH/Screenshot-20260415-113832-Whats-App-1.jpg', 
+          'https://www.dropbox.com/scl/fi/ngej9emagyhh803nbtf29/Cart.mp4?rlkey=xsvxpw3f89lun8azbv5oh5xq2&st=c6iz3xdf&raw=1',
+          'https://i.ibb.co/LmpTRpn/Screenshot-20260415-113808-Whats-App-1.jpg',
+          'https://i.ibb.co/M5yr4T4m/Screenshot-20260415-113823-Whats-App-1.jpg'
+        ],
+        fotos: [
+          'https://i.ibb.co/rGg3r9D1/1780562061752.png', 
+          'https://i.ibb.co/8LX0ynCH/20260210-140723-0.jpg',
+          'https://i.ibb.co/1JZtvX86/1780563691320.png',
+          'https://i.ibb.co/TMTXr8R9/1780561743063.png'
+        ]
+      },
+
+      'pulsosoro': {
+        titulo: 'Pulsos Oro 10K',
+        // ¡ESTA ES LA SECCIÓN NUEVA PARA TUS DESCRIPCIONES DE ORO!
+        descripciones: [
+          'Cubano 10K / 18cm * 21cm', // <--- AQUÍ EDITAS LA FOTO 1
+          'Cartier 10K / 18cm * 21cm', // <--- AQUÍ EDITAS LA FOTO 2
+          'Torsal 10K / 18cm * 21cm', 
+          'Doble Rombo 10K / 18m * 21cm'  
+        ],
+        videos: [
+          'https://i.ibb.co/jnkjvqh/1780649912275.png', 
+          'https://i.ibb.co/ZRKrC8YM/1780652334609-1.jpg',
+          'https://i.ibb.co/qMcgzdF4/Screenshot-20260409-130505-Whats-App-1.jpg',
+          'https://i.ibb.co/Lz08PqKH/Screenshot-20260605-044858-Whats-App-1.jpg'
+        ],
+        fotos: [
+          'https://i.ibb.co/jPXYWDKp/Screenshot-20260618-135051-Whats-App-1-1.jpg', 
+          'https://i.ibb.co/Ps5HQN86/Screenshot-20260409-165310-Whats-App-1.jpg',
+          'https://i.ibb.co/vCXNNSfb/1781157582444.png',
+          'https://i.ibb.co/67Kfws8w/Screenshot-20260605-044927-Whats-App-1.jpg'
+        ]
+      },
+
+      'Pulsos Plata .925': {
+        titulo: 'Pulsos Plata .925',
+        // ¡ESTA ES LA SECCIÓN NUEVA PARA TUS DESCRIPCIONES DE ORO!
+        descripciones: [
+          'Cubano  / 18cm * 20cm * 22cm', // <--- AQUÍ EDITAS LA FOTO 1
+          'Cartier  / 18cm * 20cm * 22cm', // <--- AQUÍ EDITAS LA FOTO 2
+          'Torsal  / 18cm * 20cm * 22cm', 
+          'Doble Rombo / No Disponible'  
+        ],
+        videos: [
+          'https://www.dropbox.com/scl/fi/cyvsi8gp5bbnby88ou5ty/Pulsos-Plata-.925.mp4?rlkey=61rsg1lra7lnks3bcl4o4g3z3&st=r4scc3xv&raw=1', 
+          'https://www.dropbox.com/scl/fi/jfnclcgc9jssmp044mduc/Pulso-Carter.mp4?rlkey=vslxhwpywivfmyfezvvvpkg9d&st=a7axroc0&raw=1',
+          'https://www.dropbox.com/scl/fi/miovoo73ar8yudv545sqh/Pulso-Torsal.mp4?rlkey=ilv86b5ekvi85izerqph4zyax&st=s0ptlpr4&raw=1',
+          'https://www.dropbox.com/scl/fi/brgfb63llt8cjflf9n8xx/Pulsos-Doble-Rombo.mp4?rlkey=xjj11tbef5xdxox1j3yevqi99&st=l8xkw4h0&raw=1'
+        ],
+        fotos: [
+          'https://i.ibb.co/m5hq2T7v/20260204-153020.jpg', 
+          'https://i.ibb.co/xtJV9bSW/20260204-152359.jpg',
+          'https://i.ibb.co/Mk4pXmkB/20260204-150308.jpg',
+          'https://i.ibb.co/Kjr7nb7R/20250930-160907-2.jpg'
+        ]
+      },
+
+      'pulsos-zirconia': {
+        titulo: 'pulsos Full ice .925',
+        // ¡ESTA ES LA SECCIÓN NUEVA PARA TUS DESCRIPCIONES DE ORO!
+        descripciones: [
+          'Barbado  / 18cm * 21cm', // <--- AQUÍ EDITAS LA FOTO 1
+          'Cubano / 18cm * 21cm', // <--- AQUÍ EDITAS LA FOTO 2
+          'Gucci 1x1 / 20cm', 
+          'Tennis / 18cm * 21cm'  
+        ],
+      videos: [
+            'https://www.dropbox.com/scl/fi/vfnffrhbbo46pqgb70wb3/Pulsos-Full.mp4?rlkey=5bru1fkp9rml1d029dgpukhg8&st=edfmev8b&raw=1',
+            'https://www.dropbox.com/scl/fi/e5gjjuqqwzpgarhqy0rgr/Cubano-Z.mp4?rlkey=kxfeuve3k6n7q3bpssfn5t71c&st=0gz8azgr&raw=1',
+            'https://www.dropbox.com/scl/fi/z3rttiu9dbrp0gudtqen/Gucc.mp4?rlkey=eehed1miy1i78qkithgryymo0&st=07a96jjv&raw=1',
+            'https://www.youtube-nocookie.com/embed/Bg3rDL8Z-AE?rel=0&modestbranding=1'
+        ],
+        fotos: [
+          'https://i.ibb.co/BKPvBfN4/20250907-140442.jpg', 
+          'https://i.ibb.co/RTrTFs7C/20250907-142534-1.jpg',
+          'https://i.ibb.co/8nTgt4PP/20250925-143708.jpg',
+          'https://i.ibb.co/0N4xdHY/20250920-150056.jpg'
+        ]
+      },
+
+      'Dijes': {
+        titulo: 'Dijes Oro / Plata',
+        // ¡ESTA ES LA SECCIÓN NUEVA PARA TUS DESCRIPCIONES DE ORO!
+        descripciones: [
+          'Medalla Virgen ORO 10K ', // <--- AQUÍ EDITAS LA FOTO 1
+          'Cruz Especial Oro 10K  ', // <--- AQUÍ EDITAS LA FOTO 2
+          'Medalla Virgen Plata .925', 
+          '' 
+
+        ],
+        videos: [
+          '', 
+          '',
+          'https://i.ibb.co/LmpTRpn/Screenshot-20260415-113808-Whats-App-1.jpg',
+          ''
+        ],
+        fotos: [
+          'https://i.ibb.co/HpNMjrcK/Screenshot-20260611-012347-Whats-App.jpg', 
+          'https://i.ibb.co/nMX84ndQ/Screenshot-20260610-235048-Whats-App-1.jpg',
+          'https://i.ibb.co/mVPXpdjL/Screenshot-20260611-013130-Gallery.jpg',
+          ''
+        ]
+      },
+
+    };
+    
+
+   // CARGA DINÁMICA DE FOTOS, VIDEOS Y DESCRIPCIONES
+if (categoria && colecciones[categoria]) {
+    const data = colecciones[categoria];
+    document.getElementById('dinamic-title').textContent = data.titulo;
+    
+    
+    const descripcionesUI = document.querySelectorAll('.item-info');
+    if (data.descripciones) {
+        data.descripciones.forEach((texto, i) => {
+            if (descripcionesUI[i]) {
+                descripcionesUI[i].textContent = texto;
+            }
+        });
+    }
+    
+    
+    const fotosUI = document.querySelectorAll('.gallery-item img');
+    if (data.fotos) {
+        data.fotos.forEach((url, i) => {
+            if (fotosUI[i]) {
+                fotosUI[i].src = url;
+            }
+        });
+    }
+
+    
+    const videosUI = document.querySelectorAll('video');
+    if (data.videos) {
+        data.videos.forEach((url, i) => {
+    if (videosUI[i]) {
+        if (url.includes('youtube.com') || url.includes('youtu.be') || url.includes('youtube-nocookie.com')) {
+            // Si el link es de YouTube, fabricamos un iframe dinámico
+            let iframe = document.createElement('iframe');
+            iframe.id = videosUI[i].id;
+            iframe.src = url;
+            iframe.className = videosUI[i].className; // Mantiene las clases de CSS (.media-item, etc.)
+            iframe.style.cssText = videosUI[i].style.cssText;
+            iframe.style.width = "100%";
+            iframe.style.height = "100%";
+            iframe.setAttribute('frameborder', '0');
+            iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+            iframe.setAttribute('allowfullscreen', 'true');
+            
+            // Intercambiamos el <video> muerto por el <iframe> vivo de YouTube
+            videosUI[i].parentNode.replaceChild(iframe, videosUI[i]);
+        } else {
+            // Si es un video directo normal de Dropbox, se queda como estaba
+            videosUI[i].src = url;
+        }
+    }
+});
+    }
+}
+    
+    
+    function toggleVideo(num) {
+    var img = document.getElementById('img' + num);
+    var elemento = document.getElementById('main-video' + num);
+    var arrow = elemento.parentElement.querySelector('.video-arrow');
+
+    var esImagen = elemento.src.includes('ibb.co') || elemento.src.includes('cloudinary') || elemento.src.includes('.jpg');
+
+    if (esImagen && elemento.tagName === 'VIDEO') {
+        var nuevaImg = document.createElement('img');
+        nuevaImg.id = elemento.id;
+        nuevaImg.src = elemento.src;
+        nuevaImg.style.display = 'none';
+        nuevaImg.style.width = '100%';
+        elemento.parentNode.replaceChild(nuevaImg, elemento);
+        elemento = nuevaImg;
+    }
+
+    if (img.style.display !== 'none') {
+        img.style.display = 'none';
+        elemento.style.display = 'block';
+        if (arrow) arrow.style.display = 'none';
+
+        // RED DE SEGURIDAD: Solo hacemos .play() si la función existe realmente
+        if (elemento.play && typeof elemento.play === 'function') {
+            elemento.play();
+        }
+    } else {
+        img.style.display = 'block';
+        elemento.style.display = 'none';
+        if (arrow) arrow.style.display = 'block';
+
+        // RED DE SEGURIDAD: Solo hacemos .pause() si la función existe realmente
+        if (elemento.pause && typeof elemento.pause === 'function') {
+            elemento.pause();
+            elemento.currentTime = 0;
+        }
+    }
+}
+  </script>
+
+</body>
+</html>
