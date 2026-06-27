@@ -35,11 +35,26 @@
       gap: 20px;
     }
     .gallery-item {
-      background: #111;
-      border-radius: 12px;
-      padding: 10px;
-      text-align: center;
-    }
+  background: #111;
+  border-radius: 4px;
+  padding: 10px;
+  text-align: center;
+  position: relative;
+  box-shadow:
+    0 0 20px 6px rgba(220, 185, 120, 0.5),
+    0 0 50px 15px rgba(200, 160, 80, 0.25),
+    0 0 80px 25px rgba(180, 140, 60, 0.1);
+  border: 1px solid rgba(200, 170, 90, 0.2);
+}
+
+.luxury-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
     .gallery-item img {
       width: 100%;
       aspect-ratio: 1 / 1;
@@ -74,6 +89,10 @@
       margin-top: 10px;
       font-size: 14px;
     }
+    .item-info {
+    white-space: pre-line;
+}
+
   </style>
 </head>
 <body>
@@ -86,6 +105,7 @@
   
       <!-- MODELO 1: Barbada -->
       <div class="gallery-item">
+        <span class="corner-tl"></span>
         <div class="media-container" style="position: relative; width: 100%;">
           <img src="" id="img1"/>
           <video id="main-video1" src="" controls style="display: none; width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 12px;"></video>
@@ -99,6 +119,7 @@
 
       <!-- MODELO 2: Cartier -->
       <div class="gallery-item">
+        <span class="corner-tl"></span>
         <div class="media-container" style="position: relative; width: 100%;">
           <img src="" id="img2"/>
           <video id="main-video2" src="" controls style="display: none; width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 12px;"></video>
@@ -112,6 +133,7 @@
 
       <!-- MODELO 3: Torsal -->
       <div class="gallery-item">
+        <span class="corner-tl"></span>
         <div class="media-container" style="position: relative; width: 100%;">
           <img src="" id="img3"/>
           <video id="main-video3" src="" controls style="display: none; width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 12px;"></video>
@@ -125,6 +147,7 @@
 
       <!-- MODELO 4: Espiga -->
       <div class="gallery-item">
+        <span class="corner-tl"></span>
         <div class="media-container" style="position: relative; width: 100%;">
           <img src="" id="img4"/>
           <video id="main-video4" src="" controls style="display: none; width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 12px;"></video>
@@ -148,10 +171,10 @@
       'cadenas': {
         titulo: 'Cadenas de Plata',
         descripciones: [
-          'Barbada / 4.5mm / 50cm * 55cm * 60cm',
-          'Cartier / 4.0mm / 50cm * 55cm * 60cm',
-          'Torsal / 45cm * 50cm * 55cm * 60cm',
-          'Espiga / 45cm * 50cm * 55cm'
+          'Barbada   50cm \n 2.0mm * 3.0mm * 4.0mm * 5.0mm  \n $1,110 * $1,610 * $2,360 * $3,790',
+          'Cartier   50cm \n 2.0mm * 3.0mm * 4.5mm * 6.0mm  \n $1,100 * $1,600 * $1,999 * $3,199',
+          'Torsal    50cm \n 1.5mm * 2.5mm * 3.5mm * 4.5mm  \n $400 * $900 * $1,399 * $1,200',
+          'Espiga    50cm \n  \n '
         ],
         videos: [
           'https://www.dropbox.com/scl/fi/je6yjj9m9fyfuu6dkq5uk/Barbada.mp4.mp4?rlkey=ta1ptjykxmbqvds8sjc7mou0v&st=zjijbexq&raw=1', 
@@ -217,9 +240,9 @@
         titulo: 'Pulsos Plata .925',
         // ¡ESTA ES LA SECCIÓN NUEVA PARA TUS DESCRIPCIONES DE ORO!
         descripciones: [
-          'Cubano  / 18cm * 20cm * 22cm', // <--- AQUÍ EDITAS LA FOTO 1
-          'Cartier  / 18cm * 20cm * 22cm', // <--- AQUÍ EDITAS LA FOTO 2
-          'Torsal  / 18cm * 20cm * 22cm', 
+          'Cubano  18 cm * 20 cm \n 5.0 mm \n $900', // <--- AQUÍ EDITAS LA FOTO 1
+          'Cartier  18 cm * 20 cm\n  \n $1,500 * $1,600 * $1,700', // <--- AQUÍ EDITAS LA FOTO 2
+          'Torsal  18 cm Broche Caja * 20 cm Broche Caja \n 4.0 mm * 5.0 mm \n $1,099 * $1,899', 
           'Doble Rombo / No Disponible'  
         ],
         videos: [
@@ -242,8 +265,8 @@
         descripciones: [
           'Barbado  / 18cm * 21cm', // <--- AQUÍ EDITAS LA FOTO 1
           'Cubano / 18cm * 21cm', // <--- AQUÍ EDITAS LA FOTO 2
-          'Gucci 1x1 / 20cm', 
-          'Tennis / 18cm * 21cm'  
+          'Gucci 1x1 / \n 20cm \n $', 
+          'Tennis / \n 18cm * 20cm  \n $1,500 * $1,600 '  
         ],
       videos: [
             'https://www.dropbox.com/scl/fi/vfnffrhbbo46pqgb70wb3/Pulsos-Full.mp4?rlkey=5bru1fkp9rml1d029dgpukhg8&st=edfmev8b&raw=1',
